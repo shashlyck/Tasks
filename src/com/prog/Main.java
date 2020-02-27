@@ -14,27 +14,32 @@ public class Main {
         students[2] = new Student("Pavel", 3221, 2001, "Togliatti");
         students[3] = new Student("Ivan", 9471, 2002, "Samara");
 
+        /**
+         * task №8
+         */
         List<String> studentNames = new ArrayList<>();
+        for (Student student: students) studentNames.add(student.getName());
+        for (String name: studentNames) System.out.println(name);
+
+        /**
+         * task №9
+         */
         Set<String> cities = new HashSet<>();
+        for (Student student: students) cities.add(student.getCityOfBirth());
+        for (String city: cities) System.out.println(city);
+
+        /**
+         * task №12
+         */
         List<Student> filteredStudents = Arrays.stream(students).
                 filter(st -> st.getYearOfBirth() > 2000).
                 filter(st -> !(st.getCityOfBirth().equals("Samara"))).
                 collect(Collectors.toList());
-
         List<String> filteredNames = new ArrayList<>();
         for (Student student: filteredStudents) {
             filteredNames.add(student.getName());
             System.out.println(student.getName());
         }
-        System.out.println("----------------------------------");
-        for (Student student: students) {
-            studentNames.add(student.getName());
-            cities.add(student.getCityOfBirth());
-        }
-        for (String name: studentNames) System.out.println(name);
-        System.out.println("----------------------------------");
-        for (String city: cities) System.out.println(city);
-
 
     }
 }
